@@ -1,30 +1,20 @@
-
 <?php
-error_log('Sou um log');
-echo "Olá mundo";
 
+//Underscores for variables and functions, 
+//camelCase for Methods, 
+//and PascalCase for Classes, as stated in this PHP documentation page (userlandnaming.rules)
+// There is this RFC: wiki.php.net/rfc/class-naming-acronyms – 
 
-$host = "pgsql_desafio";
-$db = "applicationphp";
-$user = "root";
-$pw = "root";
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
 
-$myPDO = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
+date_default_timezone_set('America/Sao_Paulo');
 
-// exemplo de insert
-$statement = $myPDO->prepare("INSERT INTO mytable (DESCRIPTION) VALUES ('TEST PHP')");
-$statement->execute();
+// require('classes/DatabaseConnection.php');
+require('classes/RequestHandler.php');
 
 // exemplo de fetch
-$statement1 = $myPDO->query("SELECT * FROM mytable");
-$data = $statement1->fetch();
+// $statement1 = $myPDO->query("SELECT * FROM categories");
+// $data = $statement1->fetch();
 
-echo "<br>";
-print_r($data);
 
-// exemplo de fetch2
-$statement2 = $myPDO->query("SELECT * FROM mytable");
-$data2 = $statement2->fetchALL();
-
-echo "<br>";
-print_r($data2);
